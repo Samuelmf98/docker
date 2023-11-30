@@ -1,0 +1,30 @@
+Para dockerizar un jupyter notebook y montar un volumen se debe:
+
+-Crear un Dockerfile con el siguiente contenido:
+
+FROM jupyter/base-notebook:python-3.8.8 as base
+
+WORKDIR /   #directorio que quieres que aparezca como home en jupyter (no se ve este folder, se ve lo que tenga dentro)
+
+CMD ["jupyter", "lab", "--ServerApp.token=''"] 
+
+FROM base AS self-contained
+
+
+-Crear un docker-conmpose.yaml con el siguiente contenido:
+
+services:
+  jupyter:
+    build: . #Que busque la imagen en la carpeta actual para que lea el Dockerfile
+    ports:
+      - "8888:8888"  
+    volumes:
+      - .:/workspace/portfolio_personal/test
+
+
+NOTA: "WORKDIR" Y "COPY" EN EL DOCKERFILE ES IGUAL QUE MONTAR UN VOLUMEN EN EL DOCKER-COMPOSE, ELEGIR SOLAMENTE UNA FORMA. TENER EN CUENTA QUE:
+
+- SI USAMOS "WORKDIR" Y "COPY" CUANDO ESTABLECEMOS EL FOLDER "WORKDIR" ESA CARPETA NO SE VE, VEMOS A PARTIR DE ESA CARPETA LO QUE HAYA EN SU INTERIOR
+- SI USAMOS VOLUMEN DEBEMOS DE ESPECIFICAR /home/jovyan/work/nuestro_path YA QUE ESA RUTA ES LA QUE VIENE POR DEFECTO EN JUPYTER
+
+RECOMENDACIÓN: USAR SOLAMENTE VOLUMENS EN EL ARCHIVO DOCKER-COMPOSE.YAML 
