@@ -1,0 +1,21 @@
+
+services:
+  jupyter-notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile #Que busque la imagen en la carpeta actual para que lea el Dockerfile
+    ports:
+      - "8888:8888"  
+    volumes:
+      - ../workspace:/home/jovyan/work
+    container_name: jupyter-notebook
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: myuser
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    
