@@ -1,0 +1,18 @@
+INSTRUCCIONES DE USO DE LA APLICACION (DEMO):
+
+1- Acceder al directorio docker
+
+2- Ejecutar "docker-compose up --build -d"
+
+3- Acceder a "localhost:8888"
+
+4- Ejecutar celda por celda el archivo "main.ipynb"
+
+5- Volver a la terminal y acceder al directorio workspace/pokedex
+
+6- Ejecutar "python3 flask.py"
+
+7- Acceder a "http://127.0.0.1:5001"
+
+
+Se aceptan sugerencias de todo el mundo menos del chucha de Iván
