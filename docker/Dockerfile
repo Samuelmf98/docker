@@ -4,6 +4,9 @@ RUN conda install --quiet --yes \
     'pandas' \
     'numpy' \
     'psycopg2' \
-    'sqlalchemy'
+    'sqlalchemy' \
+    'flask' \
+    'gunicorn' \
+    'app'
 
 CMD ["jupyter", "lab", "--ServerApp.token=''"]
