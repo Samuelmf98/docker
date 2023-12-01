@@ -7,7 +7,7 @@ services:
     ports:
       - "8888:8888"  
     volumes:
-      - ../workspace:/home/jovyan/work
+      - .:/home/jovyan/samuel
     container_name: jupyter-notebook
 
   postgresql:
