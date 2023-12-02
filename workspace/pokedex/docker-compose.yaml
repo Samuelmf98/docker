@@ -2,8 +2,8 @@
 services:
   jupyter-notebook:
     build:
-      context: .
-      dockerfile: Dockerfile #Que busque la imagen en la carpeta actual para que lea el Dockerfile
+      context: ../source   #salgo
+      dockerfile: ../pokedex/Dockerfile #entro
     ports:
       - "8888:8888"  
     volumes:
@@ -22,3 +22,6 @@ services:
 
 volumes:
   data:
+
+
+#docker compose -f ruta_custom-compose.yaml up --build -d

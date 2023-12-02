@@ -4,7 +4,11 @@ WORKDIR /home/jovyan
 RUN mkdir samuel
 
 
-COPY requirements.txt  /home/jovyan/samuel
+COPY ./  /home/jovyan/samuel   
+
+#../pokedex
+
+#contexto: ../source
 
  RUN pip install --no-cache-dir -r samuel/requirements.txt
 
@@ -18,3 +22,4 @@ COPY requirements.txt  /home/jovyan/samuel
 #     'app'
 
 CMD ["jupyter", "lab", "--ServerApp.token=''"]
+
